@@ -3,6 +3,17 @@ s = "00:01:07,400-234-090\n00:05:01,701-080-080\n00:01:00,400-234-090\n00:05:01,
 def solution(s)
   # write your code in Ruby 2.2
   if s.length > 0
+    #new_call_logs = {}
+    #array_1 = s.split("\n")
+
+    #array_1.group_by{|a| a.split(',')[1]}.each do |a,v|
+        #new_v = []
+        #v.each do |x|
+          #new_v << x.split(',')[0]
+        #end
+        #new_call_logs[a] = new_v
+    #end
+    #puts new_call_logs
     new_call_logs =  s.split("\n").collect{ |aa| aa.split(',')}.group_by{|time_number| [time_number[1]]}.map{|aa, dd| {aa[0] => dd.collect {|ind| ind[0]}}}
     number_with_longest_duration = {phone_number: 0}
     new_call_logs.each do |number|
